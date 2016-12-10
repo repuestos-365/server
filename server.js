@@ -23,25 +23,25 @@ var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
     mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
     mongoURLLabel = "";
-//console.log('1-mongoURL: ' + mongoURL);
-if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
-    var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),
+console.log('1-mongoURL: ' + mongoURL);
+if (mongoURL == null && process.env.MLAB_SERVICE_NAME) {
+    /*var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),
         mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'],
         mongoPort = process.env[mongoServiceName + '_SERVICE_PORT'],
         mongoDatabase = process.env[mongoServiceName + '_DATABASE'],
         mongoPassword = process.env[mongoServiceName + '_PASSWORD'],
-        mongoUser = process.env[mongoServiceName + '_USER'];
-    var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),
-        mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'],
-        mongoPort = process.env[mongoServiceName + '_SERVICE_PORT'],
+        mongoUser = process.env[mongoServiceName + '_USER'];*/
+    var mongoServiceName = process.env.MLAB_SERVICE_NAME.toUpperCase(),
+        mongoHost = process.env[mongoServiceName + '_HOST'],
+        mongoPort = process.env[mongoServiceName + '_PORT'],
         mongoDatabase = process.env[mongoServiceName + '_DATABASE'],
         mongoPassword = process.env[mongoServiceName + '_PASSWORD'],
         mongoUser = process.env[mongoServiceName + '_USER'];
-    var mongoHost = process.env.DLAB_HOST,
+    /*var mongoHost = process.env.DLAB_HOST,
         mongoPort = process.env.DLAB_PORT,
         mongoDatabase = process.env.DLAB_DATABASE,
         mongoPassword = process.env.DLAB_PASSWORD,
-        mongoUser = process.env.DLAB_USER;
+        mongoUser = process.env.DLAB_USER;*/
 
     if (mongoHost && mongoPort && mongoDatabase) {
         mongoURLLabel = mongoURL = 'mongodb://';
@@ -51,7 +51,7 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
         // Provide UI label that excludes user id and pw
         mongoURLLabel += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
         mongoURL += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
-        //console.log('2-mongoURL: ' + mongoURL);
+        console.log('2-mongoURL: ' + mongoURL);
     }
 }
 var db = null,
