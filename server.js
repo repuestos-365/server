@@ -21,16 +21,14 @@ app.use(morgan('combined'))
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
-    mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
+    //mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
+    mongoURL = 'mongodb://admin:123456@ds159737.mlab.com:59737/repuestos365',
     mongoURLLabel = "";
 console.log('1-mongoURL: ' + mongoURL);
-console.log('1-mongoHost: ' + process.env.MONGO_HOST);
 if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
     var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),
-        //mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'],
-        mongoHost = process.env.MONGO_HOST,
-        //mongoPort = process.env[mongoServiceName + '_SERVICE_PORT'],
-        mongoPort = process.env.MONGO_PORT,
+        mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'],
+        mongoPort = process.env[mongoServiceName + '_SERVICE_PORT'],
         mongoDatabase = process.env[mongoServiceName + '_DATABASE'],
         mongoPassword = process.env[mongoServiceName + '_PASSWORD'],
         mongoUser = process.env[mongoServiceName + '_USER'];
