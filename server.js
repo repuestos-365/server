@@ -8,13 +8,13 @@ var express = require('express'),
 
 Object.assign = require('object-assign')
 
-getIP(function(err, ip) {
+/*getIP(function(err, ip) {
     if (err) {
         // every service in the list has failed 
         throw err;
     }
     console.log('ExTERNAL_IP: ' + ip);
-});
+});*/
 
 app.engine('html', require('ejs').renderFile);
 app.use(morgan('combined'))
