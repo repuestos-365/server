@@ -1,0 +1,43 @@
+form {
+    .form-group {
+        text-align: left !important;
+        button {
+            width: 150px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        label {
+            text-align: left !important;
+        }
+        input {
+            color: #fff;
+        }
+    }
+    .row-social {
+        padding: 0;
+        div[class^="col"] {
+            margin: 0 !important;
+            button {
+                width: 100%;
+                margin-top: 5px;
+                //margin-bottom: 5px;
+            }
+        }
+    }
+}
+
+@media (max-width: 544px) {}
+
+@media (min-width: 544px) {}
+
+@media (min-width: 768px) {}
+
+@media (min-width: 992px) {
+    form {
+        padding-top: 5rem !important;
+        padding-bottom: 5rem !important;
+        .row-social {}
+    }
+}
+
+@media (min-width: 1200px) {}

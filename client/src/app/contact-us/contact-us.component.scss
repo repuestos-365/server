@@ -1,0 +1,30 @@
+.sebm-google-map-container {
+    height: 300px;
+}
+
+.contac-us {
+    .bg-image {
+        background-image: url('assets/welcome/welcome-bg5.jpg');
+    }
+    .row {
+        padding-top: 5rem;
+        .col-left {
+            color: #fff;
+            background: rgba(51, 51, 51, .7);
+            padding-top: 4rem;
+            padding-left: 3rem;
+            .info {
+                padding: 1rem;
+            }
+            a {
+                text-decoration: none;
+                color: #fff;
+                font-weight: lighter;
+            }
+            a:hover a:active {
+                font-weight: bolder !important;
+            }
+        }
+        .col-right {}
+    }
+}

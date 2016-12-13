@@ -1,0 +1,64 @@
+.welcome {
+    margin-top: 2rem;
+    //margin-bottom: 10rem;
+    * {
+        color: #fff;
+    }
+    /*input {
+        color: #333
+    }*/
+    button,
+    label {
+        font-weight: bolder;
+    }
+    .col-left,
+    .col-right {
+        background: rgba(51, 51, 51, .5);
+    }
+    .col-left {}
+    .col-right {
+        padding-left: 5rem !important;
+        padding-right: 5rem !important;
+        /*form {
+            .form-group {
+                button {
+                    width: 150px;
+                    margin-top: 5px;
+                    margin-bottom: 5px;
+                }
+            }
+            .row-social {
+                padding: 0;
+                div[class^="col"] {
+                    margin: 0 !important;
+                    button {
+                        width: 100%;
+                        margin-top: 5px;
+                        //margin-bottom: 5px;
+                    }
+                }
+            }
+        }*/
+    }
+}
+
+@media (min-width: 544px) {}
+
+@media (min-width: 768px) {}
+
+@media (min-width: 992px) {
+    .welcome {
+        .col-left {
+            padding: 10rem 3rem;
+        }
+        .col-right {
+            form {
+                padding-top: 5rem !important;
+                padding-bottom: 5rem !important;
+                .row-social {}
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) {}

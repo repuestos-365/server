@@ -1,10 +1,20 @@
 //  OpenShift sample Node application
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
+    ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
+    mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
+    mongoURLLabel = "";
+
+var mainRouter = require('./routes/index'),
+    apiRouter = require('./routes/api');
+
 var express = require('express'),
-    fs = require('fs'),
-    app = express(),
+    bodyParser = require('body-parser'),
+    _path = require('path'),
+    _fs = require('fs'),
     eps = require('ejs'),
     morgan = require('morgan'),
-    getIP = require('external-ip')();
+    mongoose = require('mongoose'),
+    app = express();
 
 Object.assign = require('object-assign')
 
@@ -16,14 +26,14 @@ Object.assign = require('object-assign')
     console.log('ExTERNAL_IP: ' + ip);
 });*/
 
-app.engine('html', require('ejs').renderFile);
-app.use(morgan('combined'))
+//app.engine('html', require('ejs').renderFile);
+app.use(morgan('combined'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/', mainRouter);
+app.use('/api', apiRouter);
 
-var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
-    ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
-    mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
-    mongoURLLabel = "";
-//console.log('1-mongoURL: ' + mongoURL);
+// Config URL MongoDB
 if (mongoURL == null && process.env.MLAB_SERVICE_NAME) {
     /*var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),
         mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'],
@@ -37,11 +47,6 @@ if (mongoURL == null && process.env.MLAB_SERVICE_NAME) {
         mongoDatabase = process.env[mongoServiceName + '_DATABASE'],
         mongoPassword = process.env[mongoServiceName + '_PASSWORD'],
         mongoUser = process.env[mongoServiceName + '_USER'];
-    /*var mongoHost = process.env.DLAB_HOST,
-        mongoPort = process.env.DLAB_PORT,
-        mongoDatabase = process.env.DLAB_DATABASE,
-        mongoPassword = process.env.DLAB_PASSWORD,
-        mongoUser = process.env.DLAB_USER;*/
 
     if (mongoHost && mongoPort && mongoDatabase) {
         mongoURLLabel = mongoURL = 'mongodb://';
@@ -63,7 +68,7 @@ var initDb = function(callback) {
     var mongodb = require('mongodb');
     if (mongodb == null) return;
 
-    mongodb.connect(mongoURL, function(err, conn) {
+    /*mongodb.connect(mongoURL, function(err, conn) {
         if (err) {
             callback(err);
             return;
@@ -75,10 +80,23 @@ var initDb = function(callback) {
         dbDetails.type = 'MongoDB';
 
         console.log('Connected to MongoDB at: %s', mongoURL);
+    });*/
+    mongoose.connect(mongoURL, function(err) {
+        if (err) {
+            return err;
+        } else {
+            console.log('Successfully connected to ' + mongoURL);
+        }
     });
 };
 
-app.get('/', function(req, res) {
+//app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/client/dist');
+app.set('view engine', 'ejs');
+app.engine('html', require('ejs').renderFile);
+app.use(express.static(_path.join(__dirname, 'client')));
+
+/*app.get('/', function(req, res) {
     // try to initialize the db on every request if it's not already
     // initialized.
     if (!db) {
@@ -94,7 +112,7 @@ app.get('/', function(req, res) {
     } else {
         res.render('index.html', { pageCountMessage: null });
     }
-});
+});*/
 
 app.get('/pagecount', function(req, res) {
     // try to initialize the db on every request if it's not already
