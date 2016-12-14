@@ -43,23 +43,28 @@ export class AuthService {
     // Call the show method to display the widget.
     //this.lock.show();
     this.auth0.login({
-      connection: 'repuestos365DB2',
+      connection: 'repuestos365DB',
+      //connection: 'repuestos365DB-local',
       responseType: 'token',
       email: username,
       password: password,
     }, function(err) {
-      if (err) alert("something went wrong: " + err.message);
+      if (err) alert("algo salió mal: " + err.message);
     });
   };
 
-  public signUp(username, password) {
+  public signUp(email, password) {
     this.auth0.signup({
       connection: 'repuestos365DB',
+      //connection: 'repuestos365DB-local',      
       responseType: 'token',
-      email: username,
+      email: email,
       password: password,
     }, function(err) {
-      if (err) alert("something went wrong: " + err.message);
+      if (err.message == 'the user already exists') {
+        alert("algo salió mal: " + err.message);
+        console.log(err);
+      }
     });
   };
 
@@ -67,7 +72,7 @@ export class AuthService {
     this.auth0.login({
       connection: 'google-oauth2'
     }, function(err) {
-      if (err) alert("something went wrong: " + err.message);
+      if (err) alert("algo salió mal: " + err.message);
     });
   };
 
@@ -75,7 +80,7 @@ export class AuthService {
     this.auth0.login({
       connection: 'facebook'
     }, function(err) {
-      if (err) alert("something went wrong: " + err.message);
+      if (err) alert("algo salió mal: " + err.message);
     });
   };
 

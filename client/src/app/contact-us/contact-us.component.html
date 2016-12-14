@@ -14,7 +14,7 @@
             <!-- the component as the initial center of the map: -->
 
             <sebm-google-map [latitude]="mapConfi.lat" [longitude]="mapConfi.lng" [zoom]="mapConfi.zoom" [zoomControl]="mapConfi.zoomControl" [zoom]="mapConfi.styles">
-                <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+                <sebm-google-map-marker [latitude]="mapConfi.lat" [longitude]="mapConfi.lng"></sebm-google-map-marker>
             </sebm-google-map>
         </div>
     </div>

@@ -10,5 +10,6 @@ export const myConfig: AuthConfiguration = {
     clientID: 'uIb3W48eXsaeYEZntBVac6HCCA0DCWwN',
     responseType: 'token',
     // You may need to change this!
-    callbackURL: 'http://localhost:4200/home'
+    callbackURL: 'http://nodejs-mongodb-example-jairo-perez.44fs.preview.openshiftapps.com/home'
+    //callbackURL: 'http://localhost:4200/home'
 };

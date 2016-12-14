@@ -10,6 +10,8 @@ import { AUTH_PROVIDERS }      from 'angular2-jwt';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 //google maps
 import { AgmCoreModule } from 'angular2-google-maps/core';
+//Snap.svg
+//import { snapsvg } from '@types/snapsvg';
 
 //RUTAS
 import { routes } from './app.routes';
@@ -23,6 +25,7 @@ import { AuthComponent } from './auth/auth.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { PromotionsComponent } from './promotions/promotions.component';
 import { PromotionsBrandsComponent } from './promotions-brands/promotions-brands.component';
+import { LogoComponent } from './logo/logo.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { PromotionsBrandsComponent } from './promotions-brands/promotions-brands
     AuthComponent,
     ContactUsComponent,
     PromotionsComponent,
-    PromotionsBrandsComponent
+    PromotionsBrandsComponent,
+    LogoComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,7 @@ import { PromotionsBrandsComponent } from './promotions-brands/promotions-brands
     RouterModule.forRoot(routes),
     NgbModule.forRoot(),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCOOsrv-GYYS4TwDrwfAuxrLUP-nPT_-Ms'
+      apiKey: 'AIzaSyDpfFwJ-TiQ6DLgINZ16AojmrnqEa9BumI'
     })
   ],
   providers: [

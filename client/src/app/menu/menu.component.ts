@@ -10,9 +10,19 @@ import { AuthService } from '../services/auth.service';
 })
 export class MenuComponent implements OnInit {
   public isCollapsed = false;
+  menuIcon:string = 'fa-bars';
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  openCloseMenu(){
+    this.isCollapsed = !this.isCollapsed
+    if(this.isCollapsed){
+      this.menuIcon = 'fa-times';
+    }else{
+      this.menuIcon ='fa-bars';      
+    }
   }
   
   brandGo(){
