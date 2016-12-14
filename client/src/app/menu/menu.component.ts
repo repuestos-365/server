@@ -31,7 +31,7 @@ export class MenuComponent implements OnInit {
       console.log('home');
       
     }else{
-      this.router.navigateByUrl('/welcome');
+      this.router.navigateByUrl('/');
       console.log('welcome');
     }
   }

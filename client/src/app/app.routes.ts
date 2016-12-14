@@ -13,5 +13,5 @@ export const routes: Routes = [
   { path: 'contact-us',   component: ContactUsComponent },
   { path: 'promotions-brands',   component: PromotionsBrandsComponent },
   { path: 'promotions',   component: PromotionsComponent },
-  { path: '**',     component: PageNotFoundComponent },
+  { path: '**',     component: PageNotFoundComponent }, 
 ];

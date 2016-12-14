@@ -7,7 +7,7 @@ import {brandConfig} from './brandConfig';
   styleUrls: ['./promotions.component.scss']
 })
 export class PromotionsComponent implements OnInit {
-  promoImgUrl = 'assets/promotions/promo.jpg';
+  promoImgUrl = 'dist/assets/promotions/promo.jpg';
   brandImages:any = brandConfig;
   constructor() { }
 

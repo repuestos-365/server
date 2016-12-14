@@ -93,7 +93,7 @@ export class AuthService {
   public logout() {
     // Remove token from localStorage
     localStorage.removeItem('id_token');
-    this.router.navigateByUrl('/welcome');
+    this.router.navigateByUrl('/');
   };
   
 }

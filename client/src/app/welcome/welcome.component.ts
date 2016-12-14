@@ -9,6 +9,9 @@ import {
   animate
 } from '@angular/core';
 import {Observable} from 'rxjs/Rx';
+import { Router } from '@angular/router';
+
+import { AuthService } from '../services/auth.service';
 
 import {bgConfig} from './bgConfig';
 
@@ -22,19 +25,23 @@ import {bgConfig} from './bgConfig';
       state("closed", style({opacity: 0.5})),
       transition("open <=> closed", animate( "10000ms" )),
     ])
-  ]
+  ],
+  providers: [AuthService]
 })
 export class WelcomeComponent implements OnInit {
   state = 'open';
   bgImages:any = bgConfig;
   fna:number;
   bgImage:any;
-  constructor() {
+  constructor(private auth: AuthService, private router: Router) {
      
     //console.log(this.bgImage);
   }
 
   ngOnInit() {
+    if(this.auth.authenticated()){
+      this.router.navigateByUrl('/home');
+    }
     this.fna = this.bgImages.length - 1;
     this.bgImage = this.bgImages[this.fna];
     let i = 0;
