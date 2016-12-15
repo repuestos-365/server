@@ -19,10 +19,7 @@
                 <a class="nav-link" (click)="openCloseMenu()" routerLink="/contact-us" routerLinkActive="active">Contactanos</a>
             </li>
         </ul>
-        <form class="form-inline float-lg-left" *ngIf="auth.authenticated()">
-            <input class="form-control" type="text" placeholder="Search">
-            <button class="btn btn-outline-secondary" type="submit">Buscar</button>
-        </form>
+        <app-search-plate *ngIf="auth.authenticated()"></app-search-plate>
         <div class="float-lg-right">
             <div ngbDropdown class="d-inline-block" *ngIf="auth.authenticated()">
                 <button class="btn btn-link" id="dropdownMenu1" ngbDropdownToggle><i class="fa fa-user" aria-hidden="true"></i> username</button>

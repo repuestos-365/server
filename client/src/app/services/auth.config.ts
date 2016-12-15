@@ -11,6 +11,6 @@ export const myConfig: AuthConfiguration = {
     responseType: 'token',
     // You may need to change this!
     //callbackURL: 'http://localhost:8080/'
-    callbackURL: 'http://nodejs-mongodb-example-jairo-perez.44fs.preview.openshiftapps.com/'
-    //callbackURL: 'http://localhost:4200/home'
+    //callbackURL: 'http://nodejs-mongodb-example-jairo-perez.44fs.preview.openshiftapps.com/'
+    callbackURL: 'http://localhost:4200/home'
 };

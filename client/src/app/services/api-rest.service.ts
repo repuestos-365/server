@@ -13,6 +13,7 @@ export class ApiRestService {
   private baseUrl: string = 'http://nodejs-mongodb-example-jairo-perez.44fs.preview.openshiftapps.com';
   constructor(private http: Http) { }
   //: Observable<Email[]>
+
   sendEmail(body: any) {
     let bodyString = JSON.stringify(body); // Stringify payload
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
@@ -21,13 +22,6 @@ export class ApiRestService {
     console.log(body);
     console.log('options');
     console.log(options);
-    /*return this.http.post('http://localhost:8080/send-email', body, options) // ...using post request
-    .map((res:Response) => {
-      console.log('res');
-      console.log(res);
-      res.json();
-    }) // ...and calling .json() on the response to returequest
-    .catch((error:any) => Observable.throw(console.log(error.json().error) || console.log('Server error'))); //...errors if any*/
 
     return this.http.post(this.baseUrl+'/api/send-email-contactus', body, options)
     .subscribe((data:any) => {
@@ -35,6 +29,17 @@ export class ApiRestService {
       console.log(data);
       alert('Enviado con Exito');
     });
+  }
+
+  getCarPlate(carPlate): Observable<any> {
+    let apiUrl = 'http://www.informaciondetallada.com/placas/rest/placa/'
+    // Tried adding headers with no luck
+    const headers = new Headers();
+    headers.append('Access-Control-Allow-Headers', 'Content-Type');
+    headers.append('Access-Control-Allow-Methods', 'GET');
+    headers.append('Access-Control-Allow-Origin', '*');
+    return this.http.get(apiUrl + carPlate,{headers: headers})
+    .map(response => response.json());
   }
 
 }

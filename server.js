@@ -14,6 +14,8 @@ var express = require('express'),
     eps = require('ejs'),
     morgan = require('morgan'),
     mongoose = require('mongoose'),
+    proxy = require('express-http-proxy'),
+    cors = require('cors'),
     app = express();
 
 Object.assign = require('object-assign')
@@ -31,10 +33,24 @@ Object.assign = require('object-assign')
 
 //app.engine('html', require('ejs').renderFile);
 app.use(morgan('combined'));
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
+var originsWhitelist = [
+    'http://localhost:4200', //this is my front-end url for development
+    'http://www.informaciondetallada.com/placas/rest/placa/'
+];
+var corsOptions = {
+        origin: function(origin, callback) {
+            var isWhitelisted = originsWhitelist.indexOf(origin) !== -1;
+            callback(null, isWhitelisted);
+        },
+        credentials: true
+    }
+    //here is the magic
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', mainRouter);
 app.use('/api', apiRouter);
+app.use('/placa', proxy('http://www.informaciondetallada.com/placas/rest/placa/'));
 
 // Config URL MongoDB
 if (mongoURL == null && process.env.MLAB_SERVICE_NAME) {

@@ -2,7 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { HttpModule, JsonpModule } from '@angular/http';
+import { HttpModule, JsonpModule, BrowserXhr } from '@angular/http';
+
+import {CustExtBrowserXhr} from './cust-ext-browser-xhr';
 
 import { AUTH_PROVIDERS }      from 'angular2-jwt';
 import { ApiRestService }      from './services/api-rest.service';
@@ -28,6 +30,7 @@ import { PromotionsComponent } from './promotions/promotions.component';
 import { PromotionsBrandsComponent } from './promotions-brands/promotions-brands.component';
 import { LogoComponent } from './logo/logo.component';
 import { ContactUsFormComponent } from './contact-us-form/contact-us-form.component';
+import { SearchPlateComponent } from './search-plate/search-plate.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,8 @@ import { ContactUsFormComponent } from './contact-us-form/contact-us-form.compon
     PromotionsComponent,
     PromotionsBrandsComponent,
     LogoComponent,
-    ContactUsFormComponent
+    ContactUsFormComponent,
+    SearchPlateComponent
   ],
   imports: [
     BrowserModule,
@@ -56,8 +60,10 @@ import { ContactUsFormComponent } from './contact-us-form/contact-us-form.compon
   ],
   providers: [
     AUTH_PROVIDERS,
-    ApiRestService
+    ApiRestService,
+    {provide:BrowserXhr,useClass:CustExtBrowserXhr}
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+//provide(BrowserXhr,{useClass:CustExtBrowserXhr})
