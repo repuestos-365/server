@@ -2,9 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AUTH_PROVIDERS }      from 'angular2-jwt';
+import { ApiRestService }      from './services/api-rest.service';
 
 //bootstrap
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -26,6 +27,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { PromotionsComponent } from './promotions/promotions.component';
 import { PromotionsBrandsComponent } from './promotions-brands/promotions-brands.component';
 import { LogoComponent } from './logo/logo.component';
+import { ContactUsFormComponent } from './contact-us-form/contact-us-form.component';
 
 @NgModule({
   declarations: [
@@ -38,12 +40,14 @@ import { LogoComponent } from './logo/logo.component';
     ContactUsComponent,
     PromotionsComponent,
     PromotionsBrandsComponent,
-    LogoComponent
+    LogoComponent,
+    ContactUsFormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    JsonpModule,
     RouterModule.forRoot(routes),
     NgbModule.forRoot(),
     AgmCoreModule.forRoot({
@@ -51,7 +55,8 @@ import { LogoComponent } from './logo/logo.component';
     })
   ],
   providers: [
-    AUTH_PROVIDERS
+    AUTH_PROVIDERS,
+    ApiRestService
   ],
   bootstrap: [AppComponent]
 })

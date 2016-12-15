@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 
 import { AuthService } from '../services/auth.service';
 
+
 import {bgConfig} from './bgConfig';
 
 @Component({
@@ -33,6 +34,13 @@ export class WelcomeComponent implements OnInit {
   bgImages:any = bgConfig;
   fna:number;
   bgImage:any;
+
+  mail = {
+    name:"jose",
+    email:"guillen.jorge88@gmail.com",
+    subject:"Email Example",
+    message: "Hola mundo"
+  }
   constructor(private auth: AuthService, private router: Router) {
      
     //console.log(this.bgImage);
@@ -56,6 +64,8 @@ export class WelcomeComponent implements OnInit {
         i = 0;
       }
     });
+
+    
   }
 
 }

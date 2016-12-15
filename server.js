@@ -26,6 +26,9 @@ Object.assign = require('object-assign')
     console.log('ExTERNAL_IP: ' + ip);
 });*/
 
+
+
+
 //app.engine('html', require('ejs').renderFile);
 app.use(morgan('combined'));
 app.use(bodyParser.json());

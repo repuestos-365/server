@@ -1,10 +1,10 @@
 <form>
     <div class="form-group">
-        <label for="name">Email:</label>
+        <!-- <label for="name">Email:</label> -->
         <input type="text" class="form-control" #username placeholder="user@dominio.com">
     </div>
     <div class="form-group">
-        <label for="name">Contraseña:</label>
+        <!-- <label for="name">Contraseña:</label> -->
         <input type="password" class="form-control" #password placeholder="ingrese su contraseña">
     </div>
     <div class="form-group btn-login-siginup">
@@ -12,11 +12,11 @@
         <button type="submit" class="btn btn-default btn-info" (click)="auth.signUp(username.value, password.value)">Regístrate</button>
     </div>
     <div class="row row-social">
-        <div class="col-md">
+        <div class="col-xs">
             <button type="submit" class="btn btn-default btn-primary" (click)="auth.facebookLogin()">Facebook</button>
             <!-- (click)="auth.googleLogin()" -->
         </div>
-        <div class="col-md">
+        <div class="col-xs">
             <button type="submit" class="btn btn-default btn-danger" (click)="auth.googleLogin()">Google</button>
         </div>
     </div>

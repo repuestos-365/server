@@ -1,30 +1,140 @@
-.sebm-google-map-container {
-    height: 300px;
-}
-
 .contac-us {
     .bg-image {
-        background-image: url('assets/welcome/welcome-bg5.jpg');
+        background-image: url('dist/assets/welcome/welcome-bg5.jpg');
+        height: 150%;
     }
-    .row {
-        padding-top: 5rem;
-        .col-left {
+    .col-left {
+        color: #fff;
+        background: rgba(51, 51, 51, .7);
+        a {
+            text-decoration: none;
             color: #fff;
-            background: rgba(51, 51, 51, .7);
-            padding-top: 4rem;
-            padding-left: 3rem;
-            .info {
-                padding: 1rem;
-            }
-            a {
-                text-decoration: none;
-                color: #fff;
-                font-weight: lighter;
-            }
-            a:hover a:active {
-                font-weight: bolder !important;
-            }
+            font-weight: lighter;
         }
-        .col-right {}
+        a:hover a:active {
+            font-weight: bolder !important;
+        }
+    }
+    .col-right {
+        padding: 0 !important;
+        height: 300px;
+        .sebm-google-map-container {
+            height: 100%;
+        }
     }
 }
+
+@media (max-width: 544px) {
+    .contac-us {
+        .row {
+            //padding-top: 5rem;
+            .col-left {
+                .row-info {
+                    padding-top: 2rem;
+                    div[class^="col-"] {
+                        .title {
+                            font-size: 1em;
+                        }
+                        .info {
+                            padding: 1rem;
+                            font-size: .6em;
+                        }
+                        .form-email {}
+                    }
+                }
+            }
+            .col-right {}
+        }
+    }
+}
+
+@media (min-width: 544px) {
+    .contac-us {
+        .row {
+            //padding-top: 5rem;
+            .col-left {
+                .row-info {
+                    padding-top: 2rem;
+                    div[class^="col-"] {
+                        .title {
+                            font-size: 2em;
+                        }
+                        .info {
+                            padding: 1rem;
+                            font-size: .8em;
+                        }
+                        .form-email {}
+                    }
+                }
+            }
+            .col-right {}
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .contac-us {
+        .bg-image {
+            height: 100% !important;
+        }
+        .row {
+            //padding-top: 5rem;
+            .col-left {
+                .row-info {
+                    padding-top: 2rem;
+                    div[class^="col-"] {
+                        .title {
+                            font-size: 2em;
+                        }
+                        .info {
+                            padding: 1rem;
+                            font-size: .8em;
+                        }
+                        .form-email {}
+                    }
+                }
+            }
+            .col-right {
+                height: 250px;
+                .sebm-google-map-container {
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .contac-us {
+        .bg-image {
+            height: 100% !important;
+        }
+        .row {
+            padding-top: 5rem;
+            .col-left {
+                padding-top: 2rem;
+                .row-info {
+                    padding-top: 2rem;
+                    div[class^="col-"] {
+                        .title {
+                            font-size: 2em;
+                        }
+                        .info {
+                            padding: 1rem;
+                            font-size: 1em;
+                        }
+                        .form-email {}
+                    }
+                }
+            }
+            .col-right {
+                height: 400px;
+                .sebm-google-map-container {
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) {}

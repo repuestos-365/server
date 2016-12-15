@@ -34,6 +34,7 @@ export class MenuComponent implements OnInit {
       this.router.navigateByUrl('/');
       console.log('welcome');
     }
+    this.openCloseMenu();
   }
 
 }

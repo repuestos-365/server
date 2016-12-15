@@ -1,0 +1,18 @@
+<form>
+    <div class="form-group">
+        <input type="text" class="form-control" #name placeholder="Nombre">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" #email placeholder="Email">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" #subject placeholder="Asunto">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" #message placeholder="Mensaje">
+    </div>
+    <div class="form-group btn-login-siginup">
+        <button type="submit" class="btn btn-default btn-info" (click)="sendEmail(name.value,email.value, subject.value, message.value)">Enviar</button>
+        <!-- <button type="submit" class="btn btn-default btn-info" (click)="auth.login(username.value, password.value)">Iniciar Sesión</button> -->
+    </div>
+</form>
