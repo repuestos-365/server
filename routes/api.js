@@ -42,7 +42,7 @@ router.post('/send-email-contactus', function(req, res) {
         from: '<' + req.body.email + '>', //grab form data
         to: 'repuestos365.ec@gmail.com',
         subject: req.body.subject + ' - ' + req.body.email,
-        text: req.body.message
+        text: req.body.message + " Info de contacto:" + req.body.email + " - " + req.body.phone
     }
     smtpTransport.sendMail(mailOpts, function(error, info) {
         if (error) {
