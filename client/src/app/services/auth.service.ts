@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
 import { Router } from '@angular/router';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { myConfig } from './auth.config';
 
 // Avoid name not found warnings
@@ -22,8 +23,11 @@ export class AuthService {
     responseType: myConfig.responseType,
     callbackURL: myConfig.callbackURL,
   });
+
+  //private baseUrl: string = 'http://localhost:8080';
+  private baseUrl: string = 'http://nodejs-mongodb-example-jairo-perez.44fs.preview.openshiftapps.com';
   
-  constructor(private router: Router) {
+  constructor(private router: Router, private http: Http) {
     // Add callback for lock `authenticated` event
     /*this.lock.on("authenticated", (authResult) => {
       localStorage.setItem('id_token', authResult.idToken);
@@ -39,32 +43,55 @@ export class AuthService {
     }
   }
 
-  public login(username, password) {
+  public login(email, password) {
     // Call the show method to display the widget.
     //this.lock.show();
     this.auth0.login({
       connection: 'repuestos365DB',
       //connection: 'repuestos365DB-local',
       responseType: 'token',
-      email: username,
+      email: email,
       password: password,
     }, function(err) {
       if (err) alert("algo salió mal: " + err.message);
     });
   };
 
-  public signUp(email, password) {
-    this.auth0.signup({
-      connection: 'repuestos365DB',
-      //connection: 'repuestos365DB-local',      
+  public signUp(fullname ,email, password) {
+    /*this.auth0.signup({
+      connection: 'repuestos365DB',      
       responseType: 'token',
+      name:fullname,
       email: email,
       password: password,
     }, function(err) {
-      if (err.message == 'the user already exists') {
+      if (err.message == 'usuario ya exists') {
         alert("algo salió mal: " + err.message);
         console.log(err);
       }
+    });*/
+    let body = {
+      name: fullname,
+      email: email,
+      password: password
+    }
+    let bodyString = JSON.stringify(body); // Stringify payload
+    let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request options
+
+    return this.http.post(this.baseUrl+'/api/auth-signup', body, options)
+    .subscribe((data:any) => {
+      if(data.status === 200){
+        let b = JSON.parse(data._body);
+        if(b.fromSandbox){
+          alert('El usuario ya esta registrado!!!');
+        }else{
+          console.log('login');
+          this.login(email, password);
+        }
+        //console.log(b.fromSandbox);
+      }
+      //alert('Enviado con Exito');
     });
   };
 

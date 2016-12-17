@@ -1,6 +1,9 @@
 form {
+    margin-bottom: 1rem;
+    background: rgba(51, 51, 51, .5);
+    padding: 15px 10px 10px 10px;
     .form-group {
-        text-align: left !important;
+        text-align: right !important;
         button,
         label,
         input {
@@ -18,20 +21,45 @@ form {
             color: #fff;
         }
     }
-    .btn-login-siginup {
-        text-align: center !important;
-        button {
-            width: 150px;
+    .form-group-login {
+        .row {
+            div[class^="col"] {
+                input {}
+                button {
+                    margin: 0 !important;
+                    //visibility: hidden;
+                }
+            }
         }
     }
-    .row-social {
-        padding: 0;
-        div[class^="col"] {
-            margin: 0 !important;
-            button {
-                width: 100%;
-                margin-top: 5px;
-                //margin-bottom: 5px;
+    .btn-siginup {
+        text-align: right !important;
+    }
+}
+
+.row-social {
+    padding: 0;
+    div[class^="col"] {
+        margin: 0 !important;
+        button {
+            width: 100% !important;
+            margin-top: 3px;
+            //margin-bottom: 5px;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    form {
+        .form-group-login {
+            .row {
+                div[class^="col"] {
+                    input {}
+                    button {
+                        margin-top: 20px !important;
+                        //visibility: hidden;
+                    }
+                }
             }
         }
     }
@@ -79,7 +107,13 @@ form {
             button,
             label,
             input {
-                font-size: 1.5em;
+                font-size: .8em;
+            }
+            button {}
+            .form-group-login {
+                button {
+                    float: right;
+                }
             }
         }
     }

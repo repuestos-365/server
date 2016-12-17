@@ -23,8 +23,9 @@ import {bgConfig} from './bgConfig';
   animations: [
     trigger("fadeInOut", [
       state("open", style({opacity: 1})),
-      state("closed", style({opacity: 0.5})),
-      transition("open <=> closed", animate( "10000ms" )),
+      state("closed", style({opacity: 0})),
+      transition("open => closed", animate( "10000ms" )),
+      transition("closed => open", animate( "15000ms" )),
     ])
   ],
   providers: [AuthService]

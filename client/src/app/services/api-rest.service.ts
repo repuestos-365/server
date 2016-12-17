@@ -9,7 +9,7 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ApiRestService {
-  //private baseUrl: string = 'http://localhost:8080';
+  //private baseUrl: string = 'http://localhost:8080'; 
   private baseUrl: string = 'http://nodejs-mongodb-example-jairo-perez.44fs.preview.openshiftapps.com';
   constructor(private http: Http) { }
   //: Observable<Email[]>

@@ -1,26 +1,48 @@
-<form>
+<form (ngSubmit)="logIn()" #loginForm="ngForm">
     <div class="form-group">
         <!-- <label for="name">Email:</label> -->
-        <input type="text" class="form-control" #username placeholder="user@dominio.com">
+        <input type="email" class="form-control" [(ngModel)]="modelLogin.email" [ngModelOptions]="{standalone: true}" required #email placeholder="user@dominio.com">
     </div>
-    <div class="form-group">
+    <div class="form-group form-group-login">
         <!-- <label for="name">Contraseña:</label> -->
-        <input type="password" class="form-control" #password placeholder="ingrese su contraseña">
-    </div>
-    <div class="form-group btn-login-siginup">
-        <button type="submit" class="btn btn-default btn-info" (click)="auth.login(username.value, password.value)">Iniciar Sesión</button>
-        <button type="submit" class="btn btn-default btn-info" (click)="auth.signUp(username.value, password.value)">Regístrate</button>
-    </div>
-    <div class="row row-social">
-        <div class="col-xs">
-            <button type="submit" class="btn btn-default btn-primary" (click)="auth.facebookLogin()">Facebook</button>
-            <!-- (click)="auth.googleLogin()" -->
-        </div>
-        <div class="col-xs">
-            <button type="submit" class="btn btn-default btn-danger" (click)="auth.googleLogin()">Google</button>
+        <div class="row">
+            <div class="col-lg">
+                <input type="password" class="form-control" [(ngModel)]="modelLogin.password" [ngModelOptions]="{standalone: true}" required #password placeholder="Contraseña">
+            </div>
+            <div class="col-lg">
+                <button type="submit" class="btn btn-default btn-info" [disabled]="!loginForm.form.valid">Iniciar Sesión</button>
+                <!-- auth.login(username.value, password.value) -->
+            </div>
         </div>
     </div>
 </form>
 
+<form (ngSubmit)="signUp()" #signupForm="ngForm">
+    <div class="form-group">
+        <!-- <label for="name">Email:</label> -->
+        <input type="text" class="form-control" [(ngModel)]="modelSignup.fullname" [ngModelOptions]="{standalone: true}" required #fullname placeholder="Nombre Completo">
+    </div>
+    <div class="form-group">
+        <!-- <label for="name">Email:</label> -->
+        <input type="email" class="form-control" [(ngModel)]="modelSignup.email" [ngModelOptions]="{standalone: true}" required #emailsignup placeholder="user@dominio.com">
+    </div>
+    <div class="form-group">
+        <!-- <label for="name">Contraseña:</label> -->
+        <input type="password" class="form-control" [(ngModel)]="modelSignup.password" [ngModelOptions]="{standalone: true}" required #passwordsignup placeholder="Contraseña">
+    </div>
+    <div class="form-group btn-siginup">
+        <button type="submit" class="btn btn-default btn-warning">Regístrate</button>
+        <!-- auth.signUp(username.value, password.value) -->
+    </div>
+</form>
+<div class="row row-social">
+    <div class="col-xs">
+        <button type="submit" class="btn btn-default btn-primary" (click)="auth.facebookLogin()">Facebook</button>
+        <!-- (click)="auth.googleLogin()" -->
+    </div>
+    <div class="col-xs">
+        <button type="submit" class="btn btn-default btn-danger" (click)="auth.googleLogin()">Google</button>
+    </div>
+</div>
 <!-- <button class="btn btn-primary btn-margin" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In</button>
 <button class="btn btn-primary btn-margin" (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out</button> -->

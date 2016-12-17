@@ -1,9 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
-$fa-font-path: "../font-awesome-4.7.0/fonts";
+$fa-font-path: "/font-awesome-4.7.0/fonts";
 @import "../font-awesome-4.7.0/scss/font-awesome.scss";
 * {
     font-family: 'Contrail One', cursive;
+}
+
+body {
+    background: #333;
 }
 
 .container {
@@ -15,8 +19,13 @@ input {
     border-radius: 0 !important;
 }
 
-input {
+input,
+textarea {
     background: rgba(51, 51, 51, 0.7) !important;
+}
+
+a {
+    text-decoration: none;
 }
 
 .bg-image {

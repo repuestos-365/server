@@ -33,8 +33,8 @@ Object.assign = require('object-assign')
 
 //app.engine('html', require('ejs').renderFile);
 app.use(morgan('combined'));
-//app.use(bodyParser.json());
-var originsWhitelist = [
+app.use(bodyParser.json());
+/*var originsWhitelist = [
     'http://localhost:4200', //this is my front-end url for development
     'http://www.informaciondetallada.com/placas/rest/placa/'
 ];
@@ -45,8 +45,8 @@ var corsOptions = {
         },
         credentials: true
     }
-    //here is the magic
-app.use(cors(corsOptions));
+//here is the magic
+app.use(cors(corsOptions));*/
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', mainRouter);
 app.use('/api', apiRouter);

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { EmailModel } from './email.model';
+
 import { ApiRestService } from '../services/api-rest.service';
 
 @Component({
@@ -8,23 +10,22 @@ import { ApiRestService } from '../services/api-rest.service';
   styleUrls: ['./contact-us-form.component.scss']
 })
 export class ContactUsFormComponent implements OnInit {
-
+  emailModel = new EmailModel("","","","","");
   constructor(private apiRest: ApiRestService) { }
 
   ngOnInit() {
   }
 
-  sendEmail(name, email, subject, message){
+  sendEmail(data){
     let emailConfig = {
-      name: name,
-      email: email,
-      subject: subject,
-      message: message
+      name: data.name,
+      email: data.email,
+      subject: data.subject,
+      phone: data.phone,
+      message: data.message
     }
     console.log(emailConfig);
-    if (emailConfig) {
-      this.apiRest.sendEmail(emailConfig);
-    }
+    this.apiRest.sendEmail(emailConfig);
   }
 
 }
